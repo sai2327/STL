@@ -1,23 +1,55 @@
 //it is often used more than forword_list in cpp
-     Function         Description                      
-| --------------- | ------------------------------------ |
-| push_back(val)  | Insert at end                        |
-| push_front(val) | Insert at front                      |
-| pop_back()      | Remove from end                      |
-| pop_front()     | Remove from front                    |
-| insert(it, val) | Insert before iterator               |
-| erase(it)       | Erase element at iterator            |
-| size()          | Number of elements                   |
-| empty()         | Check if list is empty               |
-| clear()         | Remove all elements                  |
-| front()         | First element                        |
-| back()          | Last element                         |
-| remove(val)     | Remove all elements with given value |
-| sort()          | Sort elements                        |
-| reverse()       | Reverse order of elements            |
-| unique()        | Remove consecutive duplicates        |
-| merge(list2)    | Merge two sorted lists               |
-| swap(list2)     | Swap contents with another list      |
+l.push_back(val); -> Inserts val at the end of the list.
+Example: l.push_back(10);
+
+l.push_front(val); -> Inserts val at the front of the list.
+Example: l.push_front(5);
+
+l.pop_back(); -> Removes the last element from the list.
+Example: l.pop_back();
+
+l.pop_front(); -> Removes the first element from the list.
+Example: l.pop_front();
+
+l.insert(it, val); -> Inserts val before the position pointed by iterator it.
+Example: l.insert(l.begin(), 20);
+
+l.erase(it); -> Removes the element at the iterator position.
+Example: l.erase(l.begin());
+
+l.size(); -> Returns the number of elements in the list.
+Example: cout << l.size();
+
+l.empty(); -> Returns true if the list is empty.
+Example: if (l.empty()) cout << "Empty";
+
+l.clear(); -> Removes all elements from the list.
+Example: l.clear();
+
+l.front(); -> Returns the first element (reference).
+Example: cout << l.front();
+
+l.back(); -> Returns the last element (reference).
+Example: cout << l.back();
+
+l.remove(val); -> Removes all elements equal to val.
+Example: l.remove(5);
+
+l.sort(); -> Sorts the elements in ascending order.
+Example: l.sort();
+
+l.reverse(); -> Reverses the order of elements.
+Example: l.reverse();
+
+l.unique(); -> Removes consecutive duplicate elements only.
+Example: If list has 1 1 2 2 2 3, becomes 1 2 3.
+
+l.merge(list2); -> Merges list2 into current list assuming both are sorted.
+list2 becomes empty after merge.
+Example: l1.merge(l2);
+
+l.swap(list2); ->  Swaps contents of two lists.
+Example: l1.swap(l2);
 
 #include <iostream>
 #include <list>
