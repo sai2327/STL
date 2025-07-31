@@ -11,22 +11,51 @@ Declaration:
     using namespace std;
     stack<datatype> s; // Creates an empty stack of specified datatype
  */   
-|       Function           | **Description**                                                                   |
-| ------------------------ | --------------------------------------------------------------------------------- |
-| s.push(value)          | Inserts `value` at the **top** of the stack.                                      |
-| s.pop()                | Removes the **top** element (does **not** return it).                             |
-| s.top()                | Returns a **reference** to the top element of the stack.                          |
-| s.empty()              | Returns `true` if the stack is **empty**, else `false`.                           |
-| s.size()               | Returns the **number of elements** in the stack.                                  |
-| stack<T> s;            | Creates an **empty stack** of type `T`.                                           |
-| stack<T> s2(s1);       | **Copy constructor** – creates a new stack `s2` as a copy of `s1`.                |
-| s1 = s2;               | **Copy assignment** – assigns contents of `s2` to `s1`.                           |
-| stack<T> s(move(s1));  | **Move constructor** – moves contents from `s1` to `s`. *(C++11+)*                |
-| s1 = move(s2);         | **Move assignment** – moves `s2` into `s1`. *(C++11+)*                            |
-| s.emplace(args...)     | Constructs and inserts an element at the top **in-place**. *(C++11+)*             |
-| s1.swap(s2)            | Swaps contents of two stacks. *(Member function)*                                 |
-| swap(s1, s2)           | Swaps two stacks using the **non-member** function from `<utility>`.              |
-| stack<T, Container> s; | Declare a stack using a specific **underlying container** (`deque`, `list`, etc.) |
+s.push(value); -> Adds value to the top of the stack. Follows LIFO (Last In First Out).
+Example: s.push(10);
+
+s.pop(); -> Removes the top element from the stack.
+Note: It does not return the removed element.
+Example: s.pop();
+
+s.top(); -> Returns a reference to the top element.
+You can assign it to a variable or print it.
+Example: int x = s.top();
+
+s.empty(); -> Returns true if the stack is empty, else returns false.
+Useful in loops for checking whether to stop popping.
+Example: while (!s.empty()) {...}
+
+s.size(); -> Returns the number of elements currently in the stack.
+Example: cout << s.size();
+
+stack<T> s2(s1); -> Copy constructor — creates a new stack s2 as a copy of stack s1.
+Example: stack<int> s2(s1);
+
+s1 = s2; -> Copy assignment — copies contents from s2 to s1.
+Example: s1 = s2;
+
+stack<T> s3(move(s1)); -> Move constructor (C++11+) — moves resources from s1 to s3.
+s1 becomes empty after this.
+Example: stack<int> s3(move(s1));
+
+s1 = move(s2); -> Move assignment operator (C++11+) — moves s2 into s1.
+Example: s1 = move(s2);
+
+s.emplace(args...); -> In-place construction — constructs an element directly at the top.
+Faster than push() when constructing complex objects.
+Example: s.emplace(10);
+
+s1.swap(s2); ->Member function — swaps contents of two stacks.
+Example: s1.swap(s2);
+
+swap(s1, s2); ->Non-member swap function from <utility> header.
+Also swaps stack contents.
+Example: swap(s1, s2);
+
+stack<T, Container> s; -> Declares a stack using a specific underlying container like deque, list.
+Default is deque.
+Example: stack<int, list<int>> s;
 
 #include <iostream>
 #include <stack>      // for stack
