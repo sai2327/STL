@@ -10,72 +10,87 @@ Declaration:
     #include <stack>
     using namespace std;
     stack<datatype> s; // Creates an empty stack of specified datatype
-    
- Common Functions in Stack:
-| Function         | Description                                                   |
-|------------------|---------------------------------------------------------------|
-| s.push(value)    | Inserts an element at the top of the stack                    |
-| s.pop()          | Removes the top element (does not return it)                  |
-| s.top()          | Returns a reference to the top element                        |
-| s.empty()        | Returns true if the stack is empty                            |
-| s.size()         | Returns the number of elements in the stack                   |
-| stack<T> s2(s1)  | Copy constructor: Copies all elements from s1 to s2           |
-| swap(s1, s2)     | Swaps contents of two stacks                                  |
-*/
+ */   
+|       Function           | **Description**                                                                   |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| s.push(value)          | Inserts `value` at the **top** of the stack.                                      |
+| s.pop()                | Removes the **top** element (does **not** return it).                             |
+| s.top()                | Returns a **reference** to the top element of the stack.                          |
+| s.empty()              | Returns `true` if the stack is **empty**, else `false`.                           |
+| s.size()               | Returns the **number of elements** in the stack.                                  |
+| stack<T> s;            | Creates an **empty stack** of type `T`.                                           |
+| stack<T> s2(s1);       | **Copy constructor** – creates a new stack `s2` as a copy of `s1`.                |
+| s1 = s2;               | **Copy assignment** – assigns contents of `s2` to `s1`.                           |
+| stack<T> s(move(s1));  | **Move constructor** – moves contents from `s1` to `s`. *(C++11+)*                |
+| s1 = move(s2);         | **Move assignment** – moves `s2` into `s1`. *(C++11+)*                            |
+| s.emplace(args...)     | Constructs and inserts an element at the top **in-place**. *(C++11+)*             |
+| s1.swap(s2)            | Swaps contents of two stacks. *(Member function)*                                 |
+| swap(s1, s2)           | Swaps two stacks using the **non-member** function from `<utility>`.              |
+| stack<T, Container> s; | Declare a stack using a specific **underlying container** (`deque`, `list`, etc.) |
 
 #include <iostream>
-#include <stack>
+#include <stack>      // for stack
+#include <utility>    // for std::swap
 using namespace std;
 
 int main() {
+    // 1. Declare a stack
+    stack<int> s;
 
-    // Create an empty stack
-    stack<int> s; // stack<datatype> s;
-
-    //  s.push(value) - Inserts an element at the top of the stack
+    // 2. push(value) - Insert elements
     s.push(10);
     s.push(20);
-    s.push(30); // Stack: 30 (top), 20, 10
+    s.push(30);
 
-    //  s.top() - Returns a reference to the top element
+    // 3. top() - Access top element
     cout << "Top element: " << s.top() << endl; // Output: 30
 
-    //  s.pop() - Removes the top element (does not return it)
-    s.pop(); // Removes 30
-    cout << "After pop, new top: " << s.top() << endl; // Output: 20
+    // 4. pop() - Remove top element
+    s.pop();
+    cout << "Top after pop: " << s.top() << endl; // Output: 20
 
-    //  s.size() - Returns number of elements in the stack
-    cout << "Current size: " << s.size() << endl; // Output: 2
+    // 5. size() - Current size of the stack
+    cout << "Size of stack: " << s.size() << endl; // Output: 2
 
-    //  s.empty() - Returns true if stack is empty
-    cout << "Is stack empty?: " << (s.empty() ? "Yes" : "No") << endl; // Output: No
+    // 6. empty() - Check if stack is empty
+    cout << "Is stack empty? " << (s.empty() ? "Yes" : "No") << endl; // Output: No
 
-    //  Displaying all elements by popping (LIFO order)
-    cout << "Stack elements (LIFO): ";
-    while (!s.empty()) {
-        cout << s.top() << " ";
-        s.pop();
-    }
-    cout << endl;
+    // 7. emplace(value) - Construct element in-place
+    s.emplace(40);
+    cout << "Top after emplace: " << s.top() << endl; // Output: 40
 
-    //  stack<T> s2(s1) - Copy constructor
-    stack<int> s1;
-    s1.push(1);
-    s1.push(2);
-    s1.push(3); // s1: 3 (top), 2, 1
+    // 8. Copy constructor
+    stack<int> copyStack(s);
+    cout << "Top of copyStack: " << copyStack.top() << endl; // Output: 40
 
-    stack<int> s2(s1); // Create a copy of s1
-    cout << "Top of copied stack s2: " << s2.top() << endl; // Output: 3
+    // 9. Copy assignment
+    stack<int> assignedStack;
+    assignedStack = copyStack;
+    cout << "Top of assignedStack: " << assignedStack.top() << endl; // Output: 40
 
-    //  swap(s1, s2) - Swaps contents of two stacks
-    stack<int> s3;
-    s3.push(100);
-    s3.push(200); // s3: 200 (top), 100
+    // 10. Move constructor (C++11)
+    stack<int> movedStack(move(copyStack));
+    cout << "Top of movedStack: " << movedStack.top() << endl; // Output: 40
 
-    s1.swap(s3); // Now s1 has 200, 100 and s3 has 3, 2, 1
+    // 11. Move assignment (C++11)
+    stack<int> moveAssigned;
+    moveAssigned = move(assignedStack);
+    cout << "Top of moveAssigned: " << moveAssigned.top() << endl; // Output: 40
 
-    cout << "After swap, top of s1: " << s1.top() << endl; // Output: 200
-    cout << "After swap, top of s3: " << s3.top() << endl; // Output: 3
+    // 12. swap() - Member function
+    stack<int> stackA, stackB;
+    stackA.push(1); stackA.push(2);
+    stackB.push(100); stackB.push(200);
+
+    stackA.swap(stackB);
+    cout << "Top of stackA after swap(): " << stackA.top() << endl; // Output: 200
+
+    // 13. std::swap() - Non-member function
+    std::swap(stackA, stackB);
+    cout << "Top of stackA after std::swap(): " << stackA.top() << endl; // Output: 2
 
     return 0;
 }
+    
+❌ Not Applicable:
+begin(), end(), [], insert(), erase() — These are not available in std::stack since it's a container adapter, not a sequence container.
