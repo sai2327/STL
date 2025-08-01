@@ -96,3 +96,9 @@ int main() {
     cout << "Shrunk capacity to fit size (not printed directly)." << endl;
     return 0;
 }
+sorting of a number in string format
+
+sort(nums.begin(), nums.end(), [](string &a, string &b) {
+            if (a.size() != b.size()) return a.size() < b.size();
+            return a < b;
+        });
