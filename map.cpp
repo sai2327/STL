@@ -33,6 +33,49 @@ Example: map<int,string> mp;   // key=int, value=string
 | key_comp/value_comp   | Key/value comparator       |
 
 
+1. map<int,string> m; //Declares an empty map with keys of type int and values of type string (stores key-value pairs in sorted order by key, unique keys only).
+
+--- Modifiers ---
+2. m.insert({key, value}); //Inserts a key-value pair if key does not already exist.
+3. m.emplace(key, value); //Constructs and inserts key-value pair in place (faster than insert for complex types).
+4. m.erase(key); //Removes element with the given key if it exists.
+5. m.erase(iterator); //Removes the element at given iterator position.
+6. m.erase(first, last); //Removes all elements in range [first, last).
+7. m.clear(); //Removes all elements, making the map empty.
+8. m.swap(other_map); //Swaps contents with another map in O(1) time.
+
+--- Lookup ---
+9. m.find(key); //Returns iterator to element with given key if found, else returns m.end().
+10. m.count(key); //Returns 1 if key exists, else 0 (since keys are unique).
+11. m.lower_bound(key); //Returns iterator to first element with key >= given key.
+12. m.upper_bound(key); //Returns iterator to first element with key > given key.
+13. m.equal_range(key); //Returns pair {lower_bound, upper_bound} for given key.
+
+--- Element Access ---
+14. m[key]; //Accesses or inserts element with given key (creates default value if not found).
+15. m.at(key); //Accesses element with given key (throws out_of_range exception if not found).
+
+--- Iterators ---
+16. m.begin(); //Iterator to first element (smallest key).
+17. m.end(); //Iterator to position after last element.
+18. m.rbegin(); //Reverse iterator to last element (largest key).
+19. m.rend(); //Reverse iterator to position before first element.
+20. m.cbegin(); //Constant iterator to first element (read-only).
+21. m.cend(); //Constant iterator to position after last element.
+22. m.crbegin(); //Constant reverse iterator to last element.
+23. m.crend(); //Constant reverse iterator to before first element.
+
+--- Capacity ---
+24. m.size(); //Returns number of elements in the map.
+25. m.empty(); //Returns true if map is empty, false otherwise.
+26. m.max_size(); //Returns maximum elements the map can theoretically hold.
+
+--- Observers ---
+27. m.key_comp(); //Returns comparison function used for ordering keys.
+28. m.value_comp(); //Returns comparison function used for ordering key-value pairs.
+
+--- Allocator ---
+29. m.get_allocator(); //Returns the allocator object used by the map.
 
 
 #include <iostream>
