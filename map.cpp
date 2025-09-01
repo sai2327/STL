@@ -6,20 +6,25 @@ automatically stores in a sorting way (ascending order)
 | Function              | Use                        |
 | --------------------- | -------------------------- |
 | insert                | Insert key-value pair      |
-| \[]                   | Access/modify value by key |
+| []                    | Access/modify value by key |
 | at                    | Access value safely        |
 | begin/end             | Forward iteration          |
 | rbegin/rend           | Reverse iteration          |
 | empty                 | Check if map is empty      |
 | size                  | Number of elements         |
-| max\_size             | Max elements possible      |
+| max_size              | Max elements possible      |
 | clear                 | Remove all elements        |
 | erase                 | Remove by key/iterator     |
 | find                  | Locate element             |
 | count                 | Check existence            |
-| lower\_bound          | First ≥ key                |
-| upper\_bound          | First > key                |
+| lower_bound           | First ≥ key                |
+| upper_bound           | First > key                |
 | emplace               | Insert efficiently         |
-| emplace\_hint         | Insert with position hint  |
+| emplace_hint          | Insert with position hint  |
 | swap                  | Swap two maps              |
-| key\_comp/value\_comp | Key/value comparator       |
+| key_comp/value_comp   | Key/value comparator       |
+
+declaration of the the maps: map<key:value>mp;
+1. insert() -> mp.insert({1,"one"}); //inserting using operator
+2. [] operator-> mp[2]="two"; //insering using operator
+
