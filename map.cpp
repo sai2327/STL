@@ -28,3 +28,6 @@ declaration of the the maps: map<key:value>mp;
 1. insert() -> mp.insert({1,"one"}); //inserting using operator
 2. [] operator-> mp[2]="two"; //insering using operator
 
+int main(){
+    
+}
