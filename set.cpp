@@ -3,6 +3,47 @@ find, count, lower_bound, upper_bound
 begin, end, rbegin, rend
 size, empty
 
+1. set<int> s; //Declares an empty set of integers (stores unique elements in sorted order).
+
+--- Modifiers ---
+2. s.insert(value); //Inserts value if not present. Duplicate values are ignored.
+3. s.emplace(value); //Constructs and inserts value (faster than insert for complex types).
+4. s.erase(value); //Removes value if it exists, does nothing if not found.
+5. s.erase(iterator); //Removes element at given iterator position.
+6. s.erase(first, last); //Removes all elements in range [first, last).
+7. s.clear(); //Removes all elements, making the set empty.
+8. s.swap(other_set); //Swaps contents with another set in O(1) time.
+
+--- Lookup ---
+9. s.find(value); //Returns iterator to value if found, else returns s.end().
+10. s.count(value); //Returns 1 if value exists, else 0.
+11. s.lower_bound(value); //Returns iterator to first element >= value, else s.end().
+12. s.upper_bound(value); //Returns iterator to first element > value, else s.end().
+13. s.equal_range(value); //Returns pair of iterators {lower_bound, upper_bound}.
+
+--- Iterators ---
+14. s.begin(); //Iterator to first (smallest) element.
+15. s.end(); //Iterator to position after last element (invalid to dereference).
+16. s.rbegin(); //Reverse iterator to last (largest) element.
+17. s.rend(); //Reverse iterator to position before first element.
+18. s.cbegin(); //Constant iterator to first element (read-only).
+19. s.cend(); //Constant iterator to position after last element.
+20. s.crbegin(); //Constant reverse iterator to last element.
+21. s.crend(); //Constant reverse iterator to before first element.
+
+--- Capacity ---
+22. s.size(); //Returns number of elements in the set.
+23. s.empty(); //Returns true if set is empty, false otherwise.
+24. s.max_size(); //Returns maximum elements the set can theoretically hold.
+
+--- Observers ---
+25. s.key_comp(); //Returns comparison function used for ordering keys.
+26. s.value_comp(); //Returns comparison function used for ordering values (same as key_comp).
+
+--- Allocator ---
+27. s.get_allocator(); //Returns the allocator object used by the set.
+
+
 C++ STL Set Functions
 ----------------------
 A set is an ordered container that stores unique elements.
