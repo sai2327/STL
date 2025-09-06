@@ -211,4 +211,9 @@ int main() {
 
     return 0;
 }
-
+//map sorted based on value not based on key
+map<int,int>mp;
+        for(int i=0;i<order.size();i++) mp[order[i]]=i;
+        sort(friends.begin(),friends.end(),[&](int a ,int b){  //Function used to Sort based  on value
+            return mp[a]<mp[b];
+        });
