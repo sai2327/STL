@@ -94,6 +94,7 @@ v1.emplace_back(30);    // v1 becomes: {10, 20, 30}
 36. vector<int> movedVec(move(vec));  // Move constructor
 37. assignedVec = move(movedVec);     // Move assignment
 
+still have to write about count and find functions
 
 #include <bits/stdc++.h>
 using namespace std;
