@@ -94,7 +94,6 @@ v1.emplace_back(30);    // v1 becomes: {10, 20, 30}
 36. vector<int> movedVec(move(vec));  // Move constructor
 37. assignedVec = move(movedVec);     // Move assignment
 
-still have to write about count and find functions
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -260,3 +259,18 @@ int main() {
     return 0;
 }
 
+// find(first, last, value): Searches for the first occurrence of value in the range [first, last).
+// Returns an iterator to the element if found, otherwise returns last (vec.end()).
+// To use: #include <algorithm>
+Example:
+    auto it = find(vec.begin(), vec.end(), value);
+    if(it != vec.end()) cout << "Found at index " << it - vec.begin();
+    else cout << "Not found";
+
+
+// count(first, last, value): Counts the number of occurrences of value
+// in the range [first, last). Returns an integer count.
+// To use: #include <algorithm>
+Example:
+    int cnt = count(vec.begin(), vec.end(), value);
+    cout << "Value occurs " << cnt << " times";
