@@ -217,3 +217,9 @@ map<int,int>mp;
         sort(friends.begin(),friends.end(),[&](int a ,int b){  //Function used to Sort based  on value
             return mp[a]<mp[b];
         });
+NOTE : using lemada [] functions we can directly write auto insetead of vector<pair<string,int>>x, vector<pair<string,int>>y
+vector<pair<string,int>> vp(mp.begin(),mp.end());
+        sort(vp.begin(),vp.end(),[](auto &x,auto &y){
+            if(x.second==y.second) return x.first<y.first;  //for string based sorting
+            return x.second>y.second;
+        });
