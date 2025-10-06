@@ -184,7 +184,7 @@ int main() {
     string numToStr = to_string(6789); // "6789"
     cout << "to_string result: " << numToStr << endl;
 
-    30. toupper / tolower: character-level transformation
+    30. toupper / tolower: character-level transformation not for strings
     char ch = 'a';
     cout << "toupper('a'): " << (char)toupper(ch) << endl;   // 'A'
     cout << "tolower('A'): " << (char)tolower('A') << endl; // 'a'
