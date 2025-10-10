@@ -274,3 +274,6 @@ Example:
 Example:
     int cnt = count(vec.begin(), vec.end(), value);
     cout << "Value occurs " << cnt << " times";
+
+sort(v.begin(), v.end()); // Sorts in ascending order
+sort(v.rbegin(), v.rend()); // Sorts in descending order
